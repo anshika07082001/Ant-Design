@@ -12,11 +12,13 @@ function App() {
   useEffect(()=>{
     axios.get('https://jsonplaceholder.typicode.com/users')
     .then(res=>{
-      data = res.data.slice(0,5);
+      let keyData = res.data.map((item)=>{
+        return {...item,key:item.id}
+      })
+      data = keyData.slice(0,5);
       setData(data)
     })
     .catch(err=>{
-        console.log(err.message)
         setError(err.message);
     })
 },[])
@@ -32,14 +34,17 @@ const columns = [
   {
     title: 'Name',
     dataIndex: 'name',
+    key:'id'
   },
   {
     title: 'Username',
     dataIndex: 'username',
+    key:'id'
   },
   {
     title: 'Address',
     dataIndex: 'address',
+    key:'id',
     render:(address)=> <p>{address.city}</p>
   },
   {

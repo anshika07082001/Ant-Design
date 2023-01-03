@@ -8,7 +8,7 @@ const TableComponent = (props) => {
   <h3>Data using Table display in  Ant Design</h3>
   <Table columns={props.columns} expandable={{
     expandedRowRender: (record) => (
-      <p style={{ margin: 0 }}>{record.description}</p>
+      <p style={{ margin: 0 }}>{record.email}</p>
     )}} dataSource={props.data}/>
   </>
   )
